@@ -1,0 +1,10 @@
+C:\Users\Administrator\source\repos\MisReportApp\Share\bin\Debug\netstandard2.1\Share.deps.json
+C:\Users\Administrator\source\repos\MisReportApp\Share\bin\Debug\netstandard2.1\Share.dll
+C:\Users\Administrator\source\repos\MisReportApp\Share\bin\Debug\netstandard2.1\Share.pdb
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.dll
+C:\Users\Administrator\source\repos\MisReportApp\Share\obj\Debug\netstandard2.1\Share.pdb

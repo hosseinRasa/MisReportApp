@@ -1,0 +1,10 @@
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\bin\Debug\netstandard2.1\DataModule.deps.json
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\bin\Debug\netstandard2.1\DataModule.dll
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\bin\Debug\netstandard2.1\DataModule.pdb
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.csproj.AssemblyReference.cache
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.AssemblyInfoInputs.cache
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.AssemblyInfo.cs
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.dll
+C:\Users\Administrator\source\repos\MisReportApp\DataModule\obj\Debug\netstandard2.1\DataModule.pdb

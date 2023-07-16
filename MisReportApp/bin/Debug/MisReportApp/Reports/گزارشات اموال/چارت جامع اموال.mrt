@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>MisReport</Alias>
+        <ConnectionStringEncrypted>9MhTC8ZNa4VvWrm9YxjrXtF44QnGBUPI7E3ozGN4IH/CeGUJSF3ThfFf1VjqdGEvkXxxK05rCplsTTnQTUzgEpBW+YhXSUvIbxPN8GLsd3uNGOfCYllC7fNaoRhhJW1n+VqVKct7QwlvXLmAakzgr8N4ywvG</ConnectionStringEncrypted>
+        <Key>f2400cab676c40518accaa456d48ef48</Key>
+        <Name>Connection</Name>
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="4">
+      <DsDaftar Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>دفتر</Alias>
+        <Columns isList="true" count="2">
+          <value>ORIGINAL,DaftarCode,DaftarCode,DaftarCode,System.Byte,_x0030_3d20376e01a4c99a46c447a42854328</value>
+          <value>ORIGINAL,DaftarDscp,DaftarDscp,DaftarDscp,System.String,_x0035_73062e1365b416cb1f1878c10728d18</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>03adb540998642eb96d547cc1705a160</Key>
+        <Name>DsDaftar</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>Select DaftarCode, DaftarDscp From AccDaftar
+Union All
+Select 0, 'نامشخص'</SqlCommand>
+      </DsDaftar>
+      <DsGoods Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>کالا</Alias>
+        <Columns isList="true" count="2">
+          <value>ORIGINAL,GDSNAME,GDSNAME,GDSNAME,System.String,_x0034_6ea1ee2a6b04989b23088069dcfbd81</value>
+          <value>ORIGINAL,GdsId,GdsId,GdsId,System.Int32,_x0034_6ea9b44ebb641318e12da18ec7c99c0</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>4c8d8ea89f714eca9bce2c2a5fb553a5</Key>
+        <Name>DsGoods</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>Select GdsId, GDSNAME From INVGOODS
+union All
+select 0, null</SqlCommand>
+      </DsGoods>
+      <DsAstGroup Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>طبقه اموال</Alias>
+        <Columns isList="true" count="4">
+          <value>ORIGINAL,usefulLife,usefulLife,usefulLife,System.Int32,f4344f249f7740c7a2fde36e3ff6dfdb</value>
+          <value>ORIGINAL,GROUPCHILD,GROUPCHILD,GROUPCHILD,System.Int32,_x0032_57cdb6a106c49a1a45a82038631bf56</value>
+          <value>ORIGINAL,GROUPCODE,GROUPCODE,GROUPCODE,System.String,_x0030_519be81ae3747bab7cae85240f2ee71</value>
+          <value>ORIGINAL,GROUPNAME,GROUPNAME,GROUPNAME,System.String,c80911fc2ed944228737f6ddb8176fa8</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>034846f730bc4099b3e4a3a4518a417c</Key>
+        <Name>DsAstGroup</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select usefulLife, GROUPCHILD, GROUPCODE, GROUPNAME from ASTGROUP
+Union All 
+select 0, 0, 0, 'نامشخص'</SqlCommand>
+      </DsAstGroup>
+      <DsMainCopy Ref="6" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>اموال</Alias>
+        <Columns isList="true" count="6">
+          <value>ORIGINAL,AstNo,AstNo,اموال,System.Int32,_x0032_40fd6c32e6742c2ad91680c6f3b4094</value>
+          <value>DaftarCode,System.Byte</value>
+          <value>AstTitle,System.String</value>
+          <value>AstOrganNo,System.String</value>
+          <value>AstNoview,System.String</value>
+          <value>GdsId,System.Int32</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>8b66d518763644bca1c22df916330d3e</Key>
+        <Name>DsMainCopy</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>Select    AstNo, AstTitle, AstOrganNo, AstNoview, GdsId, DaftarCode	from AstAsset 
+        </SqlCommand>
+      </DsMainCopy>
+    </DataSources>
+    <Relations isList="true" count="2">
+      <Ast_Dft Ref="7" type="DataRelation" isKey="true">
+        <Alias>Ast_Dft</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>DaftarCode</value>
+        </ChildColumns>
+        <ChildSource isRef="6" />
+        <Dictionary isRef="1" />
+        <Key>91d30dfba9874f2dbf226605198e05d8</Key>
+        <Name>Ast_Dft</Name>
+        <NameInSource>Relation</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>DaftarCode</value>
+        </ParentColumns>
+        <ParentSource isRef="3" />
+      </Ast_Dft>
+      <Ast_Gds Ref="8" type="DataRelation" isKey="true">
+        <Active>True</Active>
+        <Alias>Ast_Gds</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>GdsId</value>
+        </ChildColumns>
+        <ChildSource isRef="6" />
+        <Dictionary isRef="1" />
+        <Key>d83a9f27f7aa47c0a01d3e93f4b0755f</Key>
+        <Name>Ast_Gds</Name>
+        <NameInSource>Relation2</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>GdsId</value>
+        </ParentColumns>
+        <ParentSource isRef="4" />
+      </Ast_Gds>
+    </Relations>
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="4">
+      <value>,RptTitle,عنوان_x0020_گزارش,,System.String,گزارش,False,False,False,False,,_x0037_bd289156b0f4cd08ecb64795797a89b</value>
+      <value>,CompanyName,نام_x0020_سازمان,,System.String,وزارت,False,False,False,False,,dc1a4ad6ad0742fbbdada0090e35c023</value>
+      <value>,RptDate,تاریخ_x0020_گزارش,,System.String,,False,False,False,False,,d134f98e503d459ebdd9786624f0ab9e</value>
+      <value>,InputRptLogo,لوگو,,System.Drawing.Bitmap,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAABGdBTUEAALGPC_x002F_xhBQAAAWhQTFRF_x000D__x000A__x002F__x002F__x002F__x002F_ooAHqYEAlZWVAJJAnHcAnnoAoH0A_x002F_wAAm3YAAAAAjo6OkpKSnnsAnnkAqH8Ao3cA9vb2_x002F__x002F__x002F_8_x000D__x000A_9vPp5eXl_x002B__x002F_r0vb2949m_x002F_7_x002B__x002F_v4_x002B_PjpXsAqKio4NW4oaGhAJA8_x002B_fn5y8vLr6_x002B_v2trapIUAVFRUr4AA_x000D__x000A_zs7O7efWAIoptra2b29v6uPPT09PXl5e0cKY_x002B_PXsxbF6enp62s6szr6Sq40svaZkuJ9XspdGp4cb_x000D__x000A_r5I5yriHwaxytZtNlm4Ag4ODaWlpQkJCEhISNjY2mWYAwqdjt9rD4_x002F_Lpz_x002B_fYisSenc2uloMPICAg_x000D__x000A_tJI0vsObqaNg7v78Hp5ZVapwQoMKf4YaZ4kngaxuS4wvc4giPKNiQ40zKIgmwptLfYEAc7mMlsqo_x000D__x000A_WIQU_x002F_93h6L2o_x002F_6qs_x002F_xsjyUgAsHQA_x002F_5aW_x002F_8HB8SUA_x002F_4iI5jgA20sAVaZn_x002F_0VF_x002F_y0tzVoA_x002F_2Bgw2MA_x000D__x000A_u2wA_x002F__x002B_Tk_x002F_z4_x002B__x002F_8zM_x002F_3Fx_x002F_lNVyC5qAgAALbZJREFUeF7tfQt7IleaXiEE1QWiECAuQiAhpBYtIUBC_x000D__x000A_AiF07V57xuPuZOzYsb3Z8exmnb0l2Uk22dn9_x002B__x002F_lu51I3hC7d4_x002F_GT18_x002F_jhhJUnfd89_x002B__x002B_cKpz_x002F_jxdE_x000D__x000A_pS8vCPWKvPgFoe6W8Z8_x002B_Ea0W6vjPLwv9m3OQ29jPthynd34TkOgvBLOCN3P9bNZPzbzsuRz8RaEy_x000D__x000A_y2R9bzj0stnMbCQHf2FozYeVcatyNgdF_x002F_WWhXpUXYIeeZ_x002B_hVfxnupjp3e051zK9PvFQqMyen6oyr_x000D__x000A_Tt89M_x002B_T_x002F_TFGee17Fqe7xuxYQTKVEiuW9qtPzPOH754pWys_x002F_0gAuL0Gn5yNAX5RzOyk4v46d_x002B__x002F_rpa_x000D__x000A_7o2nU3kdxJWX8mD8U1feBxmWs_x002F_AtEKt3wu9D6M_x002F_mrZ_x002B_Fy_x002B_1PXIgCcYMsX_x002F_gpfw4GdzOUI0GGzvwG_x000D__x000A_ZDuHD13EaerIK_x002F_iZy_x002F_GfWol7F57rwqBFDW2Uzwsp9xLciw_x002B_WyAgxrHhZcDTnbqpwGccD_x002F_pByffdM_x000D__x000A_3v5pMPdgFIBMTCJ9UQAycPzKv5AjYYbOJcq_x002B_kkmlCvojFs7gBPjxPf35T47KOY0YZjomCTuBv_x002F_kw_x000D__x000A__x002F_yPPCDjMcOj7YGlnWTgG2hxGjzwvIMFQPz7qPgswlcoqQzPo4_x002F_Bm8GJeMAIOMwQ1RR3Eg15MKj7D_x000D__x000A_PyDiDfWjY6ymGIYXVdKZss6Um_x002B_IjgDBD_x002B_CNGyjEcdnE2QhiCcBnurCfHPiEsgm40VuCgSYT1jDvh_x000D__x000A_Q4AIw6mbQdntwdFM1FmhhQpc75NTrBuCcRqGh0l3T1xLhSMMzwoFNEAUVpwtXyszgD_x002B_nPnF_x002B_1xMn_x000D__x000A_isCQEAJZoY9j2kv5JtWOMGz5RGyEwoqZJzqNIEZRPgLKamxlmFONmKGdwJ9pSCMvBWmbQoRhP5PK_x000D__x000A_4DxcwOdJmiFgSFQwavwRFfb6Sl5MOFQR3JhYhl6Q_x002F_EwdKBg3FGEIAYEMcYw_x002B_JcbX2ELUJyrrHOnF_x000D__x000A_McmIPgYuHOMDyEXQgMDCLEcbYVjxUlmcCPgXvhCThU4sIbrXfKzieR_x002B_J4kkmleVXlgdIZZVcLYDk_x000D__x000A_UimqmEBdH2BYoHCOx0maIYwsZaEsHlD3VQH2wsDwwKOlGVfYiwnGFOBoxqeuraUwNoDFBLSUgwka_x000D__x000A_Ylxyawcl5W5Rpf2PYIs9lAtPv4nEel6DIO9PsrkEhmYw4FgAFkM4wJ74ChjGZEaAqSVFNog5HIlL_x000D__x000A_EJ4Lcms8zZaHi8snOWfm8YLLsaIFzZJNGYVNY8XcNJ5hdc9cjXI8ts3si_x002B_eqUMbheXEQlpIWxPhN_x000D__x000A_HCFQLk2TAQx5WARmaBkmioMYotSDDHtK0joBB8mRvFGjlTxfDsKKYhZlZAQV63tXXiDq4ye0uK1Q_x000D__x000A_XaFvWgzBZbFxmW8oVG5mQ_x002F_5gP6OlSEkEq1BMnvEsgMdAEEPtwblwLQ8vM64fmH_x002F_0KDxenG_x002F_Vw1AM_x000D__x000A_KcYzoHrmCSDvETTpmZv1JyQokyFm8CNScmRe1J_x002B_qAEgMMU9GZKmmGUIZDnIJxDKMh6xz6EGM3VWJ_x000D__x000A_IQmCgJ6HPRJqqeV0EajqrneJyso_x002B_GFBAjReGL_x002B_tswCUSkKEyQx8nvzWji4eTRjjESRiOnF8hyuQX_x000D__x000A_C_x002F_IOoiW8Z1njKyNrAlcWrncBE9TDVgm_x002B_w_x002B_sIwxcVos5hcA5lQj2I9P1LGgW8CQVrUGqOc_x002F_RN6ZYC_x000D__x000A_QxqoYYLv2GPoL1gQa3C9q6pTwXoTXuN3FcOXtERteah63D7xzpzKVBUYkdQUHIeEZ_x002B_RkJpsVXN5I_x000D__x000A_ikMvYdRWVGHo8rDgtqhxB0BN1sEqri_x002F_wNIyUGVASSXQhbRoaFxfx3FUYHJsbGqIp_x002F_Wj6tf3gUNkM_x000D__x000A_sXzCvlsQc1BxhjctO1dIGF0NRwuAG5MwPg0mh0GjgVG6hb4z0Q4uVYheCaaB_x002F_B6rqRYicVJ8xzhk_x000D__x000A_lgNofsxwy8qnwSVSfecMTqWnGOEWXqp9o_x002F_wMMKw71QLUhpXypWYNb6MXwoSTsw7WKXrJZ1IqXabv_x000D__x000A_si2BpK0oqWHXMN4Yc1TM07H4ZPAkPh9QxSqA4_x002B_9l3PPqiA2fEZtdwESzg6HVGJVjUXgUv3uF9ixp_x000D__x000A_rRunBwDOpBjeidP38ctGpV5KTdkhEGCi6955eRQo8cndhwG2Kxk2aYA4BUwcxGdSGBd5QrVViFgh_x000D__x000A_QdscIDNxej6ouDWeFwqJmDwKoD4cnzsBgrFLFoCxJ1Q4r3SN36GJH9EpRDWnbvw0gcvCTyn4QNED_x000D__x000A_3VU_x002B_Vn_x002F__x002F_uZCMDYBOYlwu2yqaHJQmWezpA0jV_x002B_HNoQpQAlMk8M5yUVzIwdo3Rybg10wZm5d3w_x002B_bnT_x000D__x000A_r3LfihFK9B6PEU28jj8y_x002F_XbFlsK2fAIuM5b1cRmC6kCZ1zWeQ7UlrjJ2PJ01m811Y2B2CSxma1ws_x000D__x000A_p4ZxfmBJzGlq5WwAyrB4IVewqJ1QPr9hIVZJq3G1UBWOU3QW7ox9cOXGXnqqN1eK61PLKifGawPw_x000D__x000A_k0apSB_x002B_qcpknoJolNyk5IQDfWkGK1GYByhfiNit0CkhksYSAkHZNBF0Z2LUqMgHl_x002B_fpK0_x002B_gowTYK_x000D__x000A_csqYkzNIqU4ycpnH4yxLnt1cAP3_x002F_meXAUSwLcSVjZYrZ6yFq6RDX3TCo8t9alqsaFpvNYtjpVGwh_x000D__x000A_om8xrgYZQsESG6_x002B_WQBlGhSeUs8n5jJnHr_x002F_oFoS5dIUVlbaD_x002F_F_x002F_SmITO6OpjgeszOhZ5e5IIv46QG_x000D__x000A_ZAgS5X7d44F1Nyq6yuUphaA4zSg8JrcvX1tTA6eCRDOE3sU6eJjYsMjzw0B5aUPE4cE_x002F_Lu8KfDRU_x000D__x000A_vqWTNr9s8n14d_x002F_2402JaqRBt6Vav1ovFD0naZuVQ6IB1HwW8FqlspC5ZChyJQG4q08UIrrNeqg8f_x000D__x000A_h4pWhlnY_x002B_ZXPms2VlfXkakiKJwSkR9wrAAAzTCKiteVS4PQPNB3rbwSQ1W22xCQkCZX6iSWH83lg_x000D__x000A_C_x002B_14BfhBkFikFFf60iBENdGQJ_x002F_OL7FPUVFLCPaUTWF_x002F_ThOHrveW9V30_x002B_vZh5N55fKPik4xl85d1k_x000D__x000A_zi_x002B_mc5RafbYO_x002F_IDg4kkbKopgibRsAPDL3KB8UpWhNMEbiXMGaXKvDM53LQ4hrG3xqNSHJ5Pp9Oqs_x000D__x000A_3oMZ2uvVz66m08nJkOTYu14vEsHmQ7bUl8CMKile_x002B_VwVGk_x002F_xpiro_x002B_HUJEKD_x002F_koN7nE5Wh_x002B_c39OIR_x000D__x000A_6HvB1gM6GOS30vyQOFstf8oSGp0zHQhhbDkw6eJWTRtheagqDNJINqCZU2bLdGmMlSs_x002F_G7fu9ADm_x000D__x000A_PDuCIToYxPoCGVSzbmZvSIbGxggCYzcIWaTINeXFhpmF0B50ykU1OOYhKql_x002F_ieeqTLALFZTHowER_x000D__x000A_ngW4stgE0fp9lwIM1GQwpEKZQ5lX0dHLWgxZFjoKzrjkhCICZelRrntCXbanqIZB_x002F_0IUFFR0sQmK_x000D__x000A_wFI4Db0U6CfIjt2f6RVz2_x002F_VR0Al2popOB1S_x002B_76VcKsjGLttjzAaRpdG71PxWikU5mARZkc1cgqDK_x000D__x000A_0wxOLVoMjEl3NKgmexyUgqP8IXCAi75ys3hDwehCacbTegg9sKjyieEHIlxYoQBUR8olHwdhA0YD_x000D__x000A_Xg_x002F_ive5KAdvHQokfzzPOYphNeZg51A31J6VKzgoY1PzGIlhsJlfRAm0yGUwV_x002B_27mDCp9FwxHr7er_x000D__x000A__x002F_tYjoBmCixmhj6_x002F_QFgiTXUb7Fxvy7wKAa1pHifXOxYkC1sNJakf_x002B_NTBtRSq6qpeYfeCeR91_x002F_UP2C_x000D__x000A_R0AzxL7nJbBpocio8cyIFGW12668SgAk7n_x002F_Rc8R4p4qi1bFgHObbDXmpYfWKXLzuvMczLgfh8MOV_x000D__x000A_XBiGIch_x002F_KAo50UejDc7DfDofGZmNehEYYnwpV_x002F_Dup0tW1IgE4Txr_x002B_fBcjbKGYlamdg7KbUb5HIYg_x000D__x000A_PzEUi6AbXmbYWkun02sleReHs3Wntz5y_x002B_tfN9fX1lVGVg2E4pAJBQP5Q3irYDSlFEdTVaO_x002F_j7VDP_x000D__x000A_mXGZJ0ZFI33gNBKE_x002F__x002B_3I_x002B_xjMgeGJU_x002F_4AzhNqwRkkNOBlPsgfFWii6ExyQMHahqU7PFZj8Qm_x002B_1DSc_x000D__x000A_FEN7GgvhKVMDa8dTrK6DfyeGhN6HYnPooAzXgw65RhJE5OWIgr2VTq_x002B_UmILcLMMuA8pzTZdUFjil_x000D__x000A_TiFE90K21cDC6sWo3EDeDgxV46_x002F_SBOldAcWwEA80RTmgYfeGlec0DHnz2JLxq3qDM228l8jQbupp_x000D__x000A_NdEQhvmopwf0yxWo34EhEl2h7AOE6LTQnYaE6DRY39Nrkdhj61CG_x002F_ZNhiIsk5WXTyLGPGbVerZCv_x000D__x000A_BZaBwu7B2eVhRXwgYvThL3oiQ_x002F_znA812Exj2kWHEEp0tFmM_x002B_QvHKHgLNsWGIWyUm2egqaywmLm5z_x000D__x000A_0Cs8HNltHYl2MHZpUGvp2GgxK64TwyEwpGgBQkUTxPZ2jBC1MUZjD60FMDg6GE8DpgRpQdzmvxjg_x000D__x000A_mvrYfJm7PNZ2xGijm4e01o6NFeAy1_x002F_tIrQpUeATDdZDdlLU0RohOhylGYg_x002B_v5zBoPUFHCxwk_x002F_HG5_x000D__x000A_CqOK6bpb1rkgreVaq7H2OhGDB7TWlrdB9CDsNceOfRveHPsyeIwYrqxHeyzsb6Kxh1dABHhAKRpQ_x000D__x000A_a4FIZN35AfAmxKFeHaD1HbNSGe3kby4iiEEPIJpYqcMk16nx1Kw6U85qYoSoKG7JWw1eHiCQvOQ1_x000D__x000A_miXKd7nMhotKV1sedluNFVInv69Np7PVZt8XH_x002B_uHRanim80P19cfiuvr4CA_x002B_4KHmZ2ig9Lc4IWop_x000D__x000A_trdqcsSpTEAPLIro40XRwBuiCAH80cWgPdc4QxIesD_x002B_gG8FE8ORGJRCNvET6dDrOBs9IWoQiYqUJ_x000D__x000A_5_x002B_rRQcgAVGYaK0Rli5CjbsqR6o0LU9FTNS91EGVg2TPhanaULQCuD9GsSP0MX9LLMbhUUTn3dQLR_x000D__x000A_VgRjc_x002B_4RayiByJDbHONRFKHSYKYbgQSgdFqrP1TAYGc97eTBXuTuL68ijoKDyAOQstnryUYhUAa1_x000D__x000A_ToCbEccZ47K6Ms_x002F_xcdD5TGSE_x002F_PA10WJeqK1ORYkYMrgYqOnTWQT4c_x002F_9yZCjC3ItJXSthLhUupK_x002B_t_x000D__x000A_epE4U_x002B_JnkCDeq6xLQzXLa9pWbIirRA2dVTG6N_x002B_nyyFAoiZoW4wzRcUpaQcTEMQnBXqZu5bYk5Gfq_x000D__x000A_ZTm0FENlcz6HCNBIaX_x002B_jitICCe2fA9RkCLFutDpVEiqiFmJ0L16fXJ38h_x002F_9YhCP8GVLY4vo0TkkB_x000D__x000A_7KTh_x002F_Lv8ngUG_x002B_YZIkZrf_x002B_GKmtWyprQuaYZ0cMEwUpzdAsHzJNsoBo6F1NMbLjItKgivNVq_x002F_y2wmK_x000D__x000A_qwiulZzrl1_x002F_9_x002B_PlvIYLDZ9YTl9SgVlR6ys5GkhDvTFcBnD6D0ajgvdT6hV59gaQDTgQaSZYJXrQq_x000D__x000A_3lXMUF_x002F__x002F_gN7aqJheKGL89X96nfpS3iC_x002B_Wd1_x002B_8_x002B_brz52r6Jp2AHwBHReFhzcXjwpjQ3e4Z9bEltJS_x000D__x000A_3aCDNBaEWOBFYCCocybZzCsyjIZlsECb30qx_x002B_fr1l9vfvpa3gO9XAdtvVv_x002B_zvekiBqKnKmCoJASl_x000D__x000A_iHoFUw02Cf_x002F_XS6aR5lEcxAGTftY9yBJQOTAO6jSOUnEACzESKHoftIIKvvzmu9VVi_x002B_FrYggct1d_x002F__x000D__x000A_I19KAIUMZYcm8QBbRHcD3rCaxTJBZ82hndTx0G1kNOQpbkPKkJOhPTAIvWu9S5cP_x002B_dFgs5fwJdH5_x000D__x000A_LsoQ8OarX8sXY1EiIWpPpleRvToOCwu7S3ip14SXi_x002F_hmYxwoaBW_x002B_P8y6ECbOxLhhnlQDl6retWC2_x000D__x000A_VqflXMHr71P4zzfExWb4LR0hbL_x002F_5Qr4aC_x002F_LXOtya2fdxDyHuLDgBOagFU8jL5YMLoaINm20FzuHP_x000D__x000A_ILQqBTFdLYr3a4GivvqZydOICP3DEktgCGL8YcHE75AlKCGaipdKWA8yyn45Wq0_x002F_AHMWSc4u3JFT_x000D__x000A_VYoOvFXaTTnHmrwhjNVyIOH1d6vbyEr4_x002F_GUSw9Xt1V_x002F_JCWLQISGqet_x002B_qcSA3HuNDGQC6waJnfyFw_x000D__x000A_oxBDXAq2J03XRqfv5EptEfZWAi4UCApDeAFIZgiammyMJETta6SCQOAuviuqByMyeQgqKIC4SH3g_x000D__x000A_TNZ9zfo2JrIQyworQQ9T_x002F_EsYOrF6ja_x002B_2t_x002F__x002B_LxfC7N2_x002B_2iZtg_x002B_02yFNkS1XWsmcaWIjk9HSt0wvwA_x000D__x000A_dKlk4qe8R8h2yw0maPUOT2wNLa4QA7K919vA4IfP_x002B_8ZE10e_x002F__x002F_c1XAY7b25DixIN1ZVf01Ozaoyc2_x000D__x000A_EFSOYg14MbhARFB5j0f0JEnXxmlzYWj3w6iwFRRnPPBvXyOAH2ihriRkLebXP9gct7_x002B_ik8SB1wvy_x000D__x000A_3EA1gSHlqp3TOoYs2u1qwxT0Qsfqf0vSoFJSO_x002B_WW4SOaf_x002F_U1D377u2_x002B__x002F__x002F__x002B_Z3q5_x002F_j3xXDpl6L_x002B_Rwi_x000D__x000A_vsb2j3I0AqnRZDatjXViMNZOeyz7l0GwURAUITebD0iCwVDB40c0P_x002F_v8jYwb8OZrbsELw_x002F_UpVHh0_x000D__x000A_AJza1_x002F_bnaB5iwAFDXcy6_x002B_xH7ZQC9lr_x002F_84oUxRIioAON6VN6nGsB2wsZlPHKYOBAAFHRAryLD5gr4_x000D__x000A_reG6HHKcLwzF7VU5FgFfTeW_x002F_lhDZseg0YAlHI3ZqZEZNAasZrOINEwwoqZbh_x002B_tz50SKoE8_x002F_yOpSC_x000D__x000A_J2VndLHelEOA31sUk5Ibpab8Tm3MArBG6VJB9zCS0_x002B_8LthCzS5Z8k07F9Sk2_x002B_JLBlFQRHDoTM_x002B_o3_x000D__x000A_v5e_x002F_AprNGVx6jP1T1luCJcWkkLEjDKXCMLdDcTjTKqdKguvkqHgt_x002B_7l0fMdOoq4pIKBKw5XyjKAn_x000D__x000A_BY_x002F_GBFvOX_x002F_21jDjkPnCLAlT_x002B_oMw2Q0ecEiDR2fCyj5pQk5KwWurCQpT0esETey54O4fJHHDNytr3_x000D__x000A_zLeF6GXMQMZG0aLY7DsfmmbIIdP6m_x002F__x002F_KxmppKcAY7ZuEoMjtEt0soVvCCOTstQTYa1xnF3S_x002B_cd8M_x000D__x000A_SVi_x002B_QgHRysRxjlBPxfQDZuhcY_x002F__x002B_lUp295lICEUzG_x002F_van_x002F__x002B_aSnFeKfyuHCL_x002F_Werpt6bQNNkRyNRTw_x000D__x000A_jFbh2qZyhKxhE39Rbx_x002B__x002F_SRuU7Y6_x002B_qVgwce_x002F_doBlzEA5WhpNmcTYarRQpSSMEtO6PP736uz0muLL3_x000D__x000A_6qc_x002F_ymGE1tMkd0pVIvvSM3QuxvehYziX11T94grcguyU5gYzWnVPJcZUnRNhpOjR2iI3UNaCTdL5_x000D__x000A__x002B_oVTATHuyXCDnuPvX70yeeneq1evLDH_x002B_SgsxKQPHy7HVzz2keKJmHXtrktJQMJyjwi1gyLUJ3q4k_x000D__x000A_O59xt5gqWPBmjgpttQLQJYPti9aE1plM_x002F_W6LEAi_x002B_UhJkhq_x002F__x002B_Xv4EMEJMUFPUmTVqeJ0UaGlI1Uuo_x000D__x000A_ZMIQxcn7iFWyGQP2SqiNVd6_x002F_ggxVyrZXpmYbMSS10fm_x002B_QgWrJ6OklkD_x002B_ASmFGL4yiqotcfsHORIC_x000D__x000A_uho2Cgh_x002B_eLecWu1DV8MM0QqlBFoQ_x002B_CWyYHFJe0lxNsqisKi8KE5iyHkpf8mAWthQSchojVHtIKF_x002F__x000D__x000A_DDN8ZWbIeF87jhhgeOIaEcM7rkGLnmIIZIbg50eiu6xmsVDdAFxfJT0AhtKGRda0jk5dZeryBV0p_x000D__x000A_4ATzMm47ASwl_x002F_Sfk898jDI2e6iQowRDRmbKnIfNBXyB6CpkzMUQ_x002F_r1zsghpKuU3s85C_x002F_Aoac6eIO_x000D__x000A_Ft4LQV_x002B_nK6q622ACFHWsMJk0iTCG4Sv5O1QZSk0T0m9KomhGWQggMNZTvFsGowValt5LsaCGCuxO_x000D__x000A_wC_x002B_ARsvzSHrKRVPujZ1Su_x002F_pVOFs3jsZ4UrLCV_x002F_8jyvAf5AOWIca7Gq6C8RWnkLjWy4SgRqQYp8eH_x000D__x000A_oO_x002F_EwmwKwvoZrA40mgJ_x002B_BuxR1MKvOiXuQYUapYS6NGUAb7SZ_x002F_RvRiWH4T_x002F_IBp6oZxiduHBBxJ4SU_x000D__x000A_5zg_x002B_tqMR5SngPXUFtGipmzYpMMD3Vvdw0zMyxBxehaCZU1pDgvEMner_x002F_1J5GjjjOPxOdGIb_x002F_Lh8w_x000D__x000A_rmb7azkQBOfeaxCfVDEIQiM9BYZTNwse1dw1uLAdZSpB1NNKFkwaGarT4fGpKvCDnVINFdssV_x002F_oT_x000D__x000A_0flfUYZ_x002F_kA_x002B_Y3HQhQwz6ShfR8HDSgeGVj2M1OrrAlcJ3NENyTrgNDRhirNfJ35l02h9kaBovTOcl_x000D__x000A_GEKOoRoQaDgQqsEOz3CTnUlVdZUYC9PRp_x002B_9ixxttE9e25SjoreoqxGppnAz_x002F_QHT_x002B_JcrwX_x002B_UDSzME_x000D__x000A_Q1S1EvahIMKDL63CQE25AZAvxcLsogKGnKFXPIz1cgwmCDzxQoY6tBk7_x002F_N9E51_x002B_EHkAx_x002F_Df5gFPW_x000D__x000A_X1rgaTiL0u3ELJgb0KW_x002F_Wy153T5LgCVsWamqeuCaOMNBYG_x002B_KrhYbLQAmeOtogUlpLEOdfevcO6GT_x000D__x000A_IaaPfQxTzEHY63ncK7PK_x002F_oeaNaaroyfjBkK8HIFjmMBLyR2N_x002B_IjfaIY6PfkbovN_x002F_hB5AMfy_x002F_8gEr_x000D__x000A_HsavJ6q2Cb7WnUAU4pQig9VEBcEs7pnavToO7g6k8ma1gPyU7CWNZG0EnZ5Ywftfkc7fCT2AMPxn_x000D__x000A__x002B_bPjfBGdlgCkF0WZsOkEgg32qX8YkMuCaEhQtRKCLRHs2BykhEg2gEYyb4JROFMn_x002F_BH52Az_x002F_kRia_x000D__x000A_4uKrqGoHwP3ZPM1pcJWCLMnqWD_x002B_kpIE1GAAfs1btuJvFnahI9cRQbtHuuqCviTDUfsaalYQinxdJ_x000D__x000A_pCVsRsPtabNASuBjCxDwNZykRxcy4ipgBeNMLZuCoG9KfGZogqHze_x002F_2VeFdKjSG9ECzpI0BuOjR6_x000D__x000A_y2H8AajkBSEBQ7frxDIBgUsGYQzREkjppzDDn6xNOEbsCZ39wISa_x002F_i1rpKpgEUstAltdcxa5OYP5_x000D__x000A_PpWk8QHxt4phYLw7_x002F_24tvgFDk5KC_x002B_zXfiFd8TrzljVVE8DqFnaZoESyC_x002F_dAbSoCsCARz1iJFxRI4_x000D__x000A_ZiMNIb51VqZOKWPvD7puApT1ElRCRsNXY9cNNYWVPVM0NMuHyz4R09JTsjtjhuBJofzAzwRnNQir_x000D__x000A__x002F_2mZlb0Vcz0QsswqR1KrzWhMH7e2Wt4UDVFeA5Z_x002B_0KC58YBWYnQ6jinApMBbx8gyAl19A_x002B_377SFX_x000D__x000A_bIZ2bmxW4hJXSbHVxlY_x002F_caHcMQEed_x002F_dale_x002F_yNwPr_x002B_EeP1NCrGKDkcDpWfup_x002B_xVcX9phNfKObKwQ2_x000D__x000A_Q9MsTV5BRIWh7YFl10VfoPUSExBrpexhP6pgngSFlqviB2YLYAK895JCYnxWYwtxe1WCYsUyQ5vh_x000D__x000A_r7QfTRah6Xth5IN4oDMvtCIdK5KeyRVA_x002F_4wtpKK_x002F_BdOiu_x002B_Z1foISRklO9uO2XSKMJcL4SYojvX6K_x000D__x000A_MAwtgolWyPvn1jBYsMGUtVphOS8NYX2zWZ_x002B_sKAmVG4_x002B_3s6qdxqiScgo0Y3qJrX5efeI2dAyM81jd_x000D__x000A_3oaBVwMEDcNfWyv5SdFeqjXypZSe_x002B_UPtDCFgq5tKON0qj1M3i6unc9f1LjCTUedQtOjErPKQLKky_x000D__x000A_P0lNd_x002B_yRv_x002F_miqu47YOi9_x002B_V9YuzG2V_x002B_ObwWYLZkNpJ5iJBAxgKN0z9xy_x002B_Xh6m_x002F_IcSU6wv_x002B_aGofZYi_x000D__x000A__x002B_GPR0mxZMlw0xLiFfBuWnsLgvwwSXOFk6_x002F_Ov7A8l6qi1jC_x002B_xXc81qhMfKyDBoYuvH9iAKf1fb1Jx_x000D__x000A_egWcJzA69jSgr8prgVOWeU1IawAmT1ld_x002F_dJK2AB40wXwC2ynsdb7w1AdDIgWeoceOlX8F_x002B_RFlZMP_x000D__x000A_OXgL5AeQ4iAZEijojvcZnBDOwc4KqKpcAvWArgoU5WtR_x002F_Kgphgi_x002B_7ju_x002F__x002B_vzH7eC2rwVbMLmQoVpN_x000D__x000A_RbGMPFoIB4UvvCuncilm9YCSWsWuP_x002B_s50wx6K565mQmt6MHkuom_x002B_xlD8XYjgtz_x002B_shna1AcFEL6N7_x000D__x000A_JqgtqrwHOfFgMlVg7UL8UD9aBONOMmcN_x002B_SCqKqh7xp_x002B_yphfOrF2coBPiaxLKYAJT_x002F_CZE8Hvc_x002B_xzC_x000D__x000A_IoJy2yxavKkMIV8mnwB_x002B_MOVdjvgmCYKUQ4tgbY3LTJ3R9IJtE0J_x002F_MOFVviZZiM7vQVTfhwjqhZvV_x000D__x000A_1W_x002B__x002F_ZKrbyTYIoKtwlm9KAIj0ON_x002F_gG6qpsdOz7tlb2CxlWLvE4Is9B4SO1GaBB7XC5zbzeZ5d_x002F_los_x000D__x000A_fm1vXyfotTfat1jERQ4KmIkgEa7lKSs1_x002B_RmkV0iXu9tDraHwh8XBkGEVI_x002B_Bw8BxwZpgts31MausG_x000D__x000A_72RPSE4J_x002B_t4tQcooKG89_x002F_Xb1zdfxNSGD98_x002F_WOChZ6lWo4uNbqLTQDwFDLFUfBtpttFg6gjDashta_x000D__x000A_ShXI3SS0axB8L6UFQ3CbQ_x002B_Tr3yVl2wxu0Mgb7QhAi3oQxKjysZ7UsaQI4TvmRPAd_x002B_uk0FzhZstXK_x000D__x000A_DpdP6psCcOOCDbPEv7qtWvyvPyxqb1InWJu6NQKY8SsX6zj7SX7WwBbDbu0DxRT_x002B_1CT4YNOtMbpA_x000D__x000A_fUx9C2QIoWRU7fcmmFuEikVud8WCFip1amh1nLIQ6n2oxYOtwfjHLcfAfoAnUITYMN0Lru5obecM_x000D__x000A_XN6EcBk0wtd_x002F_vc1xAv4fCCGRp5to0H2kps62ttODM8WN_x002B_vZ6BYxUbRp_x002B_GCYuIPB2OIgP1kHDkNrt_x000D__x000A_CXr6WZBh84sffwB2wO_x002B_HoIctBkp_x002B_C3xykxiGGEJ6bB0ByIMWlkHgmagwN1UH4misDMmdJgXF6wDF_x000D__x000A_It1BirDLfQDnqTHAU9tZk81w7IxbwQf_x002B_PpyR2rB_x002B_FgQAeQJERev8xqAX1xgXASp8kyw4oOBtC4kE_x000D__x000A_pQY1HT3LDsHT4C_x002B_4yjuC6y5ekgkhaMHEKM6X6vtkE55LY_x002B__x002F_fBy7ky4MOqJj4SE_x002F_1IBfzGBd7hRq_x002F__x000D__x000A_FfAXbiFpphIQWAugMGOaitYvkqi7kRNq4XLwRj2SYpB1_x002F_C3AAMlH09ajeKx4iCtE5icbAPqxxMuj_x000D__x000A_b57MxIZnde3MQwp3eBgBZbIRqu6bU_x002F_MELEL0sR8CKUDhxKYXZOaYGqPquaoIftbhI6GeNImgVR5z_x000D__x000A_k4L1GEZZnYWRxDvUUFDEXbYWHiZo92RN_x002B_x7rNzv34n2_x002F_j4f1ExYoRGOIntOrqzLMTHY8xWCXLYjE_x000D__x000A_B0Iagnr1ZzSumsw4OJzC038WuqXFhkI0auo585vCXASpDCZJUZMpJhJUS77mYQOVSeZmpBliV9iI_x000D__x000A_0MPnZTwVVf1TMjhrOm_x002F_zQGHcLD9vE51enu_x002B_CSngMFm4cjkNiLiNP_x002F_YDTymaI6hUOw1Q3dGOeDMZ1_x000D__x000A_H2pbPID6OYdGzOP1tHllkqd_x002F_zg76YLNUoiecJDxkqFKMo0hPF4wDh4l8Z2dTgv3Yx2r3QtshNt9l_x000D__x000A_LO6zBCgYz4gjCnEoIQSiBdOW_x002B_zMAvJsvYdU0jmIzod2ww7sETJpUndL1C2e6ftPbtF3_x002B_wasnomw6_x000D__x000A_OvVrz_x002B_diTH6nACK_x002B_5Bf_x002B_hZrCHaEY21_x002B_k_x002F_dEBqAQnjA1SBmum1PORoVSSiI86Ws1CXVe4Yh0iWONd_x000D__x000A_Due_x002B_m9q7nJy1KvjN0fjCp9sQODmFnElrDD9VGCGd23TcmlsvxBACYywkkVnTBdlcWQa2puni9LMf_x000D__x000A_w5vCpEUj64_x002F_n08vZnnvz2IABhobLTAXfcy_x002F_mGBqqLaTCz1UAeZo1PPMEefGAsWLsBZOb_x002B_E0vG5Ii_x000D__x000A_6TS3fK3d56WsUGDzF06HQ6qMr2aZjF9AKeMTAx4J_x002F_fw3onlJzxYHlOlnkCBpMmkwPbgVIQxBjDHW_x000D__x000A_aFOMfaiQU_x002B_JnogFUY8T6xQBfHg2hHnZfbV2lwHb4jzBI_x002B_TWQR0E_x002F_Ax3hFjLuZEzp6BTcDZRnVuKq_x000D__x000A_fkNADRCG2I6qqqHYjBvOTo035iIk2Va_x002F_J4cAJb0ApeJF0Mrwwrd_x002B_EQIJPsmjBiiiLH1vipJE04Dq_x000D__x000A_Uw4jCud0gbahuJbfinBUFIsxw9npGH6y98lqj8KUztFuCnh7X7l14dk5M_x002B_CJBC1F1eBlqXoWf9HR_x000D__x000A_3tIplzgwD8YCju2wrnLlW1yJ1HGNQ4vfmiQyweqmCvkG_x002F_igGLqAF6T2DIGRtEYrAcVpxRpeeKw8N_x000D__x000A_F7gpGraYEg93Lb9WCwoSKRZXQmVO6UBuDGfkt9jN1K0_x002B_L65s1z3U0DEtoAXBP6X5RPRphS0IXJYC_x000D__x000A_b42_x002F_I2BTlHnsptdAQ4UjkEwHSPabxWKAYONgKy_x002F_yA6HDS3W7WN8mCFlxuXBecXrntlwF7FyfjMrM_x000D__x000A_lFAamK1VzvtBEdMiLKLWhmDWSWvHml_x002F_b6myqIq_x002F_f1AR3GgeHaUUPPra7AdHiULyofp4Xo_x002B_pMIAUy_x000D__x000A_C0wWFtwwuhzK9AD9EFysx8Ag6V44Bf3LuYyuKv9h9JBEp7cOOwfdzY2NxsbGZrdT20XqRjnXDgMZ_x000D__x000A_beB3zzBhHPXxOXHy3gKurD0b44hlA3x8Ojsk_x002B_DbF8DMxzfgRoIBYLRDwtRxmhDd1BNqZ_x002F_KtZscPI_x000D__x000A_pqy87ekY6RLKgkQm6_x002B_nQMJRgISp9uCUQriwDP9MlF4o6PRjDczVUo38ew5FTmYkdMzDpN_x002B_gaFxmW_x000D__x000A_GcIcUvFBQZUwBCJYwQX3EAre9YsIUNCfFKC8kHML6HcE_x002B_CF8glDu1EVPggzSBzVwrxZJ8LHtww5Z_x000D__x000A_KpjjYTBw2p1M_x002F_jEGqLflvULB25sHpvMFUG1N3Ewwl3CzeHn6UQ1BIby6tVFL5_x002F_NS_x002B_hutheqWjrTB_x000D__x000A_A4VCJsjLElcWk5jAJALcbGZPpckvjf7ZdRZYGkZUAff5V48JMT8111Aq2CAPA6I0ZteJ9gTUY_x002B_8A_x000D__x000A_LqXZ5qeeXCoCCtPhS2pnBOXecHKezXhQtSB4i9UwlVG0TdUfRedwd3drq92Of94wQz_x002F_2zs2ynVWh_x000D__x000A_hPD9TCYDlcT5dD7_x002B_qOw0ypVev18niLYYFX5q65JRxRKbRHUuv6xepSv1_x002B_71KJJ391OhBPZrN_x002B_Fn8_x000D__x000A_deKnouf62UwGa_x002B_4_x002F_LZ0qiLDeGg_x002F_P5icnV4iT_x002B_dlw3IfEtNxrDa8u94JxcXmcudOTcR_x002F_JVfqt8dkc_x000D__x000A_zn9yMoeTD8djkOMnkSII6tJlK8xmC4UCGD_x002B_iUMj6Gex3tJ5jJtRMqrTm1ym4Ap2fTg0nz2bRFuHg_x000D__x000A_7HreeukoYaF_x002F_tYdNN_x002B_3rwkD7eZaK9YdT_x002F_FW2xAsA8BLnZx_x002B_J5Pgmps6IgNzE3sljZxp89LUfirdJ_x000D__x000A_cD28n_x002B_5jAALfUiMAuDDTy0flyhhktxw7wIv0uZMwLCwjRobr36jfEKz2WuMxuSJBrw6ug1wKYn4T_x000D__x000A_V_x002F_glQPYwfzSUz9zl5AgB_x002B_5KqHsgQsKnpgyvyLzEbGbUmFMQhiqeu2WarZ5AyyBcX42PzQ5THMy_x002F_Z_x000D__x000A_2TBcCNjoDar1q5TdFwPa5xcZa4rQZrkV2w9_x002B_Mhau79t9_x002F_I_x002B_I_x002F_lWyIF2wwL3JGOm1ptmYj0WOuIVM_x000D__x000A_6gRJ9oYXhWRrdAve_x002B_fjj2V8YUGj4maBXd8mRZ85POHPsT_x002B_LoJcH1UlQMVftDUOFAck8ApZidfQrx_x000D__x000A_1d6bSq5cPzkH08Kwj9E_x002B_484wLeaErYqpuAxuWUBBK6nQqD88uUj5GPTl5DNSik_x002B_Be_x002B_f0zq53qj1I_x000D__x000A_rU7Oxq1_x002B_r2qS0d6Vv7zHteBmUlYor0LiBnnhnNPBT4R2DUra_x002F_eTt_x002B_YTq_x002B_Y2HrjJLGV2M2cm_x002F_GrjE_x000D__x000A_BWkC5mXezQNrZKXT2HX0F8M9_x002F_b9zH78jQQMSc8rLTybTyxkYp_x002B_YExXkmdT6zLdiFedg7v55cgazq_x000D__x000A_9R4tViYjvb8b_x002F_qGrF4VeeD68j3_x002B_cQgJo6RbYuZMhKVy1fyYhw714TAbbvu84zvFHFGJpX14Adu8T_x000D__x000A_NwZHMPfRFV6eBSI1Lv_x002B_BKN3U0vG7fU8Lr91bevdRcBTYCnz4kK4KqtdglNPYQNafzzw_x002F__x002B_hvkcdhJ_x000D__x000A_o_x002F_wI_x002B_wtaIM9Bqbt1Ki8Vasd0S_x002B_Bi9DL_x002B_pJXsC3tns5uEFX0LG7f7ZpPpywtxp3t4u79_x002F_tPU2Sufg_x000D__x000A_7i5mOTuAPj4yfSH6k73Fse5gcBS4yuAFhQjcBsd33NHsxjqxRv5499mmP1qwuFJq34d_x002F_haj7Lh9q_x000D__x000A_IT8N7bvjQd7q1t4nEantHxkVemHUBgO7399gYoNube1uf5A_x002F_TLhHYEnUgup_x002B_SEvrtFWm4TSCs9po_x000D__x000A_38dvhXoeDm6Pt4IX2srRP5s8tM3a2mD_x002F_KF17Ms_x002B_gZCjY39Y2cl2Q5js6ZKObf2GSQC_x002B_686ghYXhg_x000D__x000A_XEKpu5sf7C_x002B_692oBbB6Yrzndfad77Nx192M3dnXXjk9rLxKOS7Wj45jdKoTuEfxvM_x002B_TW754oxs2B_x000D__x000A_vACwCHNw2a1bYAkO_x002F_EBtHLTQ2Bochx7b_x002B_mh08sdHh7HeEmnVtnAMthAB7eUicwy29Ddvic1hLvcu_x000D__x000A_l3eAYCf39oBtIoJuejDIxyy4LIFG7XYwwE0A8cDItL_x002F_xDl3PJkpSYdPKtR6LfVGVhkizc5uG65fu_x000D__x000A_3h7tOKcLJm5z91QFmSWxUUsPjk8PF32jdnjrNN457_x002B_kzdg337hmmscPFhHManFd02ptgpWgrG7mE_x000D__x000A_W_x002F_J3uru3g_x002F_27_x002F_OHBxoIIXdroyMfCyr2hjL37FhQISBwBvfbRAUePDSPE02fFqgMy6VIuOsYtkCKM_x000D__x000A_YTf3tuMclhKVcmeztnV7NNjfvzu9XWtv7R7W4L_x002F_D3a322u3R3f7_x002B_4Ci_x002F_1YkX3JqyAryCc9hx7kt3_x000D__x000A_zr4W1536ViiqPRZtds_x002B_N4xhB4R1X9zgDpx10PQ_x002B_h0egedDo1QqdzsBmKqWGslZRQ8f7RzVx3I2j3_x000D__x000A_SoglUbMnoqFtuHZv6QJJrPEWhQvG2B083ZdplKzUZRf182in66SVKu7mBk74d9uPWIj7T_x002F_JpGvbX_x000D__x000A_b7WHPsy9h5e7uZrTxQk83gAlLm06Cfa4HCRbQTTeDsDsb7u5rdPcplPb2EjncnfyNwuHTL_x002F_2rMvW_x000D__x000A_AqlCY3DLVtBdQ3PYyEHsAE07be_x002F_Dq9yGTiAjng2kEYND8iTvJUu5Mw5rExXD2dodDJx3XecAzv1e_x000D__x000A_OR2DjX1VCDxLiOHkrBswxwZYP_x002B_Aod9DplpyN9_x002F_AaqOxCwBQcvOOdTreoTxthj_x002F_eOZPAOD_x002B_8ONnPH_x000D__x000A_Wk13yKoPcve36K_x002B_do7sov9KRiRbGkh6P0_x002B_DcN7qdw_x002F_c0v3HYhxEebTpHt2Y8W_x002F_c5ooXjLOXC9fOO_x000D__x000A_ljVoA0Yjcj3wgn47tlF7_x002F_7aREAZKt_x002F_t29KKE8kno8pgwYqVPB8eDo_x002F_RuZ2OnFt_x002B_86IJC7245uyT2_x000D__x000A_A_x002F_BF3Z27t_x002B_wt0_x002F_dO5zR3IJMeGk4JDYGZ4IS2wRyP8JOD_x002B_BAC2MkPQlr_x002F_ZG_x002F_67rANsXj_x002F_6Har1rV1_x000D__x000A__x002F_fA_x002B_wbhBXW4xcp52dnP3udyAZqh7fwT2qmelERJlLac9FDbRBsAQCbST4k_x002F_jNnd_x002F_2AmMR4ni0dhM_x000D__x000A_QzYir0OoHcc9H6oGDg_x002F_yxc3BHQx0QxoPpdxdFzMDwYHl_x002B_ugDpZzDGWEth827XTDOfO7uXS5AQWPz_x000D__x000A_CHLTjYND0CmY_x002B_jXQKTocMqcXwcEg2HhDtHP3g9xO4y6_x002F_s_x002F_W2yzETkD62Bnv3dpdNE86AvLvOziky_x000D__x000A_3G2_x002F_o1i0C_x002F_mu0wDnGTvkzv6pTby02dm6xbzoNI1e7sXROD0OmVRj8JY9d8NKufdN67jktE9LHVBj_x000D__x000A_8CvdXA50_x002B_uDQSW_x002F_tgNhOg8ltnOqU2vfxN8bB9bry2IwXx_x002B_5x0jP3NI5MqrLVRae6sQbxpLOTu8U_x002F__x000D__x000A_nJac41zjfTene6FJOLgL9Gs_x002B_HbqnizttVJALBiC4NuTTOzu5nWNumIPhQr2QI8UtBdMLG421_x002B__x002F_ib_x000D__x000A__x002F_j4NaoNBbDzaQGdBPwbH7nMj7_x002B_wctSF3KR2nOxykG_x002B_Dma0dOhyzzNhdvTKWt4_x002B_eVRy_x002B_And3ju2h_x002F__x000D__x000A_hlLW09xa_x002B_4jDYg0CBjiXjc3Sjq4Scu_x002F_utdNskC8NobG1f_x002F_en0c4wSoeDgfp9QhvgUHJSvnVya8fM_x000D__x000A_rPtOsWrn3hvxRGy6mz62zPhngM7p8W0nEiY3lHBLQJYDDMdBekloNBpb4dqhUTt6dkvrY2Bj6_x002B_44_x000D__x000A_H2XJKFky6rwzxZKzf7eWs95CRn96fPqx_x002F_P8LYHPrbv_x002B_o3V3kYUE9763WQ_x002B_dgR5FvdNKD_x002F_dPgvSU_x002F__x000D__x000A_S5QO0nfHR_x002B_naAzxtYOsavgNB888Hpe7hGuRUp1CRdBtJVHegJNvNH0Hm1X5M7_x002F_FnBaCwlT69Gxzv_x000D__x000A_D_x002B_6OTm_x002F_59ov87enR3WAfKrJbmAB919efPXZKjcbGJmKjUSotr8HPgOP8Pxk5e54BFvaGAAAAAElF_x000D__x000A_TkSuQmCC,False,False,False,False,,_x0033_2864b17badd4aefbd2f5c555cb100dd</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>40fef2cc5b0b48938fcaae2c5b3da393</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Dashboard1 Ref="9" type="Stimulsoft.Dashboard.Components.StiDashboard" isKey="true">
+      <BackColor>Transparent</BackColor>
+      <Components isList="true" count="2">
+        <Chart1 Ref="10" type="Stimulsoft.Dashboard.Components.Chart.StiChartElement" isKey="true">
+          <AltClientRectangle>0,0,0,0</AltClientRectangle>
+          <Area Ref="11" type="Stimulsoft.Dashboard.Components.Chart.StiChartArea" isKey="true">
+            <InterlacingHor Ref="12" type="Stimulsoft.Dashboard.Components.Chart.StiHorChartInterlacing" isKey="true">
+              <Color>Transparent</Color>
+            </InterlacingHor>
+            <InterlacingVert Ref="13" type="Stimulsoft.Dashboard.Components.Chart.StiVertChartInterlacing" isKey="true">
+              <Color>Transparent</Color>
+            </InterlacingVert>
+          </Area>
+          <Arguments isList="true" count="0" />
+          <BackColor>Transparent</BackColor>
+          <ChartConditions isList="true" count="0" />
+          <ClientRectangle>-20,100,1240,520</ClientRectangle>
+          <CloseValues isList="true" count="0" />
+          <ConstantLines isList="true" count="0" />
+          <DataFilters isList="true" count="0" />
+          <EndValues isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Guid>b928e850258c41eeb0942453b118b55d</Guid>
+          <HighValues isList="true" count="0" />
+          <Labels Ref="14" type="Stimulsoft.Dashboard.Components.Chart.StiChartLabels" isKey="true">
+            <AxisPosition>Value</AxisPosition>
+            <Font>B Nazanin,8</Font>
+            <ForeColor>Transparent</ForeColor>
+            <TextAfter>قلم</TextAfter>
+          </Labels>
+          <Legend Ref="15" type="Stimulsoft.Dashboard.Components.Chart.StiChartLegend" isKey="true">
+            <Labels Ref="16" type="Stimulsoft.Dashboard.Components.Chart.StiChartLegendLabels" isKey="true">
+              <Color>Transparent</Color>
+              <Font>B Nazanin,8</Font>
+            </Labels>
+            <Title Ref="17" type="Stimulsoft.Dashboard.Components.Chart.StiChartLegendTitle" isKey="true">
+              <Color>Transparent</Color>
+              <Font>B Nazanin,8,Bold</Font>
+              <Text>تعداد اموال به تفکیک یگان</Text>
+            </Title>
+          </Legend>
+          <LowValues isList="true" count="0" />
+          <ManuallyEnteredChartMeter Ref="18" type="Stimulsoft.Dashboard.Components.Chart.StiValueChartMeter" isKey="true">
+            <Key>079d42cb9aaa4f148460d6c8cf79c499</Key>
+          </ManuallyEnteredChartMeter>
+          <ManuallyEnteredData>H4sIAAAAAAAEAIvm5VJQiAYRCgpKYYk5palKOlCea14KqoBzTn5xKqqQT345qoBHZnoGqohjUXppbmpeCVwgPBWoBsENTi3KTC1WAvFiebliAcwjTseRAAAAWklQ</ManuallyEnteredData>
+          <Margin>3,3,3,3</Margin>
+          <Marker Ref="19" type="Stimulsoft.Dashboard.Components.Chart.StiChartMarker" isKey="true" />
+          <Name>Chart1</Name>
+          <NegativeSeriesColors />
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <ParetoSeriesColors />
+          <RoundValues>True</RoundValues>
+          <Series Ref="20" type="Stimulsoft.Dashboard.Components.Chart.StiSeriesChartMeter" isKey="true">
+            <Expression>DsDaftar.DaftarDscp</Expression>
+            <Key>74419a9eb06246cb80ad8d40c147b951</Key>
+            <Label>DaftarDscp</Label>
+          </Series>
+          <SeriesColors />
+          <Title Ref="21" type="Stimulsoft.Dashboard.Components.StiTitle" isKey="true">
+            <BackColor>Transparent</BackColor>
+            <Font>B Nazanin,10.8,Regular,Point,False,178</Font>
+            <ForeColor>Transparent</ForeColor>
+            <SizeMode>Fit</SizeMode>
+            <Text>تعداد اموال</Text>
+            <Visible>False</Visible>
+          </Title>
+          <TopN Ref="22" type="Stimulsoft.Data.Engine.StiDataTopN" isKey="true" />
+          <TransformActions isList="true" count="0" />
+          <TransformFilters isList="true" count="0" />
+          <TransformSorts isList="true" count="0" />
+          <TrendLines isList="true" count="0" />
+          <UserSorts isList="true" count="0" />
+          <UserViewStates isList="true" count="0" />
+          <ValueFormat Ref="23" type="NumberFormat" isKey="true">
+            <DecimalDigits>0</DecimalDigits>
+            <GroupSeparator>,</GroupSeparator>
+            <NegativePattern>1</NegativePattern>
+            <State>DecimalDigits, Abbreviation</State>
+          </ValueFormat>
+          <Values isList="true" count="1">
+            <Item10 Ref="24" type="Stimulsoft.Dashboard.Components.Chart.StiValueChartMeter" isKey="true">
+              <Expression>Sum(DsMainCopy.AstNo)</Expression>
+              <Key>953fdb94c0b744aea7dfaecbf9bdc433</Key>
+              <Label>اموال</Label>
+            </Item10>
+          </Values>
+          <Weights isList="true" count="0" />
+        </Chart1>
+        <Panel1 Ref="25" type="Stimulsoft.Dashboard.Components.Panel.StiPanelElement" isKey="true">
+          <AltClientRectangle>0,0,0,0</AltClientRectangle>
+          <BackColor>221, 217, 195</BackColor>
+          <ClientRectangle>-20,0,1220,80</ClientRectangle>
+          <Components isList="true" count="4">
+            <ComboBox1 Ref="26" type="Stimulsoft.Dashboard.Components.ComboBox.StiComboBoxElement" isKey="true">
+              <AltClientRectangle>0,0,0,0</AltClientRectangle>
+              <BackColor>Transparent</BackColor>
+              <Border>All;Gray;1;Solid</Border>
+              <ClientRectangle>900,20,200,40</ClientRectangle>
+              <DataFilters isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>B Nazanin,8,Bold</Font>
+              <ForeColor>Transparent</ForeColor>
+              <Guid>7f304f4f696047818f3b7aa2bcff0f98</Guid>
+              <KeyMeter Ref="27" type="Stimulsoft.Dashboard.Components.ComboBox.StiKeyComboBoxMeter" isKey="true">
+                <Expression>DsDaftar.DaftarCode</Expression>
+                <Key>51cf1f3063164477b41d40d077ed41aa</Key>
+                <Label>DaftarCode</Label>
+              </KeyMeter>
+              <Margin>3,3,3,3</Margin>
+              <Name>ComboBox1</Name>
+              <NameMeter Ref="28" type="Stimulsoft.Dashboard.Components.ComboBox.StiNameComboBoxMeter" isKey="true">
+                <Expression>DsDaftar.DaftarDscp</Expression>
+                <Key>2b9a972c976b498b97c1fdb18de2f9b5</Key>
+                <Label>DaftarDscp</Label>
+              </NameMeter>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <SelectionMode>Multi</SelectionMode>
+              <ShowAllValue>True</ShowAllValue>
+              <TransformActions isList="true" count="0" />
+              <TransformFilters isList="true" count="0" />
+              <TransformSorts isList="true" count="0" />
+            </ComboBox1>
+            <Text1 Ref="29" type="Stimulsoft.Dashboard.Components.Text.StiTextElement" isKey="true">
+              <AltClientRectangle>0,0,0,0</AltClientRectangle>
+              <BackColor>Transparent</BackColor>
+              <ClientRectangle>1100,20,80,40</ClientRectangle>
+              <Expressions isList="true" count="0" />
+              <ForeColor>Transparent</ForeColor>
+              <Guid>1ad872d2e966403e98da0cccda208c90</Guid>
+              <Margin>3,3,3,3</Margin>
+              <Name>Text1</Name>
+              <Padding>0,0,0,0</Padding>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <SizeMode>Fit</SizeMode>
+              <Text>&lt;font face="B Nazanin" size="12"&gt;&lt;text-align="Center"&gt;&lt;b&gt;یگان&lt;/b&gt;&lt;/text-align&gt;&lt;/font&gt;</Text>
+              <Title Ref="30" type="Stimulsoft.Dashboard.Components.StiTitle" isKey="true">
+                <BackColor>Transparent</BackColor>
+                <Font>Arial,11</Font>
+                <ForeColor>Transparent</ForeColor>
+                <SizeMode>Fit</SizeMode>
+                <Text>Text</Text>
+                <Visible>False</Visible>
+              </Title>
+            </Text1>
+            <ComboBox2 Ref="31" type="Stimulsoft.Dashboard.Components.ComboBox.StiComboBoxElement" isKey="true">
+              <AltClientRectangle>0,0,0,0</AltClientRectangle>
+              <BackColor>Transparent</BackColor>
+              <Border>All;Gray;1;Solid</Border>
+              <ClientRectangle>620,20,200,40</ClientRectangle>
+              <DataFilters isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>B Nazanin,8,Bold</Font>
+              <ForeColor>Transparent</ForeColor>
+              <Guid>12181eda6a324c2088c7a0ebea2815ef</Guid>
+              <KeyMeter Ref="32" type="Stimulsoft.Dashboard.Components.ComboBox.StiKeyComboBoxMeter" isKey="true">
+                <Expression>DsGoods.GdsId</Expression>
+                <Key>b2161fde942f4188b5880357b9447f12</Key>
+                <Label>GdsId</Label>
+              </KeyMeter>
+              <Margin>3,3,3,3</Margin>
+              <Name>ComboBox2</Name>
+              <NameMeter Ref="33" type="Stimulsoft.Dashboard.Components.ComboBox.StiNameComboBoxMeter" isKey="true">
+                <Expression>DsGoods.GDSNAME</Expression>
+                <Key>a125582c13094f4b97e7d4148f08fb9b</Key>
+                <Label>GDSNAME</Label>
+              </NameMeter>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <SelectionMode>Multi</SelectionMode>
+              <ShowAllValue>True</ShowAllValue>
+              <TransformActions isList="true" count="0" />
+              <TransformFilters isList="true" count="0" />
+              <TransformSorts isList="true" count="0" />
+            </ComboBox2>
+            <Text2 Ref="34" type="Stimulsoft.Dashboard.Components.Text.StiTextElement" isKey="true">
+              <AltClientRectangle>0,0,0,0</AltClientRectangle>
+              <BackColor>Transparent</BackColor>
+              <ClientRectangle>820,20,80,40</ClientRectangle>
+              <Expressions isList="true" count="0" />
+              <ForeColor>Transparent</ForeColor>
+              <Guid>44d4b16ebc384b31af010fe7819e8ff1</Guid>
+              <Margin>3,3,3,3</Margin>
+              <Name>Text2</Name>
+              <Padding>0,0,0,0</Padding>
+              <Page isRef="9" />
+              <Parent isRef="25" />
+              <SizeMode>Fit</SizeMode>
+              <Text>&lt;font face="B Nazanin" size="12"&gt;&lt;text-align="Center"&gt;&lt;b&gt;گروه کالا&lt;/b&gt;&lt;/text-align&gt;&lt;/font&gt;</Text>
+              <Title Ref="35" type="Stimulsoft.Dashboard.Components.StiTitle" isKey="true">
+                <BackColor>Transparent</BackColor>
+                <Font>Arial,11</Font>
+                <ForeColor>Transparent</ForeColor>
+                <SizeMode>Fit</SizeMode>
+                <Text>Text</Text>
+                <Visible>False</Visible>
+              </Title>
+            </Text2>
+          </Components>
+          <DashboardWatermark Ref="36" type="Stimulsoft.Base.Drawing.StiAdvancedWatermark" isKey="true">
+            <TextColor>Gray</TextColor>
+            <TextFont>Arial,36</TextFont>
+            <WeaveMajorColor>119, 119, 119, 119</WeaveMajorColor>
+            <WeaveMinorColor>85, 119, 119, 119</WeaveMinorColor>
+          </DashboardWatermark>
+          <Expressions isList="true" count="0" />
+          <Guid>16b165c433614f14833c6bd39e7e510a</Guid>
+          <Margin>3,3,3,3</Margin>
+          <Name>Panel1</Name>
+          <Padding>0,0,0,0</Padding>
+          <Page isRef="9" />
+          <Parent isRef="9" />
+          <Shadow>[68:34:34:34];-3, -3;5;False</Shadow>
+        </Panel1>
+      </Components>
+      <DashboardWatermark Ref="37" type="Stimulsoft.Base.Drawing.StiAdvancedWatermark" isKey="true">
+        <TextColor>Gray</TextColor>
+        <TextFont>Arial,36</TextFont>
+        <WeaveMajorColor>119, 119, 119, 119</WeaveMajorColor>
+        <WeaveMinorColor>85, 119, 119, 119</WeaveMinorColor>
+      </DashboardWatermark>
+      <Expressions isList="true" count="0" />
+      <Guid>b100b79f25a24090af227074283d5f80</Guid>
+      <Name>Dashboard1</Name>
+      <Report isRef="0" />
+    </Dashboard1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>7/16/2023 9:52:49 AM</ReportChanged>
+  <ReportCreated>7/9/2023 1:02:40 PM</ReportCreated>
+  <ReportFile>C:\Users\Administrator\source\repos\MisReportApp\MisReportApp\bin\Debug\netcoreapp3.1\Reports\گزارشات اموال\چارت جامع اموال.mrt</ReportFile>
+  <ReportGuid>3185f1a0c4de4865abce482e113b2ad0</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Inches</ReportUnit>
+  <ReportVersion>2023.1.1.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>
